@@ -4,6 +4,8 @@ A simple web application for viewing and editing Markdown files with syntax high
 
 [中文文档](README_zh.md)
 
+ <img src="./markdown/img/welcome.png" width = "450" alt="示例" align=center />
+
 ## Features
 
 - Browse and view Markdown files in a tree structure

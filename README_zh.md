@@ -4,6 +4,8 @@
 
 [English](README.md)
 
+ <img src="./markdown/img/welcome.png" width = "450" alt="示例" align=center />
+
 ## 功能特点
 
 - 树形结构浏览和查看 Markdown 文件
