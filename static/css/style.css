@@ -360,11 +360,29 @@ header h1 {
 footer {
     background-color: #2c3e50;
     color: white;
-    text-align: center;
-    padding: 1rem;
+    padding: 0.8rem 1.5rem;
     font-size: 0.8rem;
     opacity: 0.9;
     z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20px; /* 固定高度 */
+}
+
+.footer-left, .footer-right {
+    display: flex;
+    align-items: center;
+}
+
+.footer-left a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.footer-left a:hover {
+    opacity: 0.8;
 }
 
 /* 新文件对话框 */
@@ -489,5 +507,18 @@ footer {
         height: auto;
         min-height: 400px;
         max-height: none;
+    }
+    
+    footer {
+        flex-direction: column;
+        height: auto;
+        padding: 0.8rem;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .footer-left, .footer-right {
+        width: 100%;
+        justify-content: center;
     }
 } 

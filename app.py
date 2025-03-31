@@ -187,21 +187,24 @@ def save_content():
 def create_file():
     """创建新的Markdown文件"""
     data = request.json
-    file_name = data.get('name')
+    file_name = data.get('name', '').strip()
     directory = data.get('directory', '')
     
     if not file_name:
         return jsonify({'error': '未提供文件名'}), 400
     
     try:
-        # 确保文件名以.md结尾
-        if not file_name.endswith('.md'):
-            file_name += '.md'
+        # 移除可能存在的.md后缀，然后重新添加
+        file_name = file_name.replace('.md', '')
+        file_name = f"{file_name}.md"
+        
+        # 检查文件名是否包含非法字符
+        if any(char in file_name for char in ['/', '\\', ':', '*', '?', '"', '<', '>', '|']):
+            return jsonify({'error': '文件名包含非法字符'}), 400
         
         # 清理路径
         directory = directory.lstrip('/\\')
         directory = os.path.normpath(directory).replace('\\', '/') if directory else ''
-        file_name = file_name.lstrip('/\\')
         
         # 构建文件路径
         relative_path = os.path.join(directory, file_name) if directory else file_name

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 获取DOM元素
     const fileTree = document.getElementById('file-tree');
     const contentContainer = document.getElementById('content-container');
-    const markdownContent = document.getElementById('markdown-content');
+    let markdownContent = document.getElementById('markdown-content');
     const refreshBtn = document.getElementById('refresh-btn');
     const newFileBtn = document.getElementById('new-file-btn');
     const newFileModal = document.getElementById('new-file-modal');
@@ -124,6 +124,9 @@ document.addEventListener('DOMContentLoaded', function() {
      * 创建新文件
      */
     function createNewFile(fileName, directory) {
+        // 移除可能存在的.md后缀
+        fileName = fileName.replace(/\.md$/, '');
+        
         fetch('/api/create', {
             method: 'POST',
             headers: {
