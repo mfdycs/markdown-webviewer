@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown查看器</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- 引入代码高亮库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Markdown查看器</h1>
+    </header>
+
+    <div class="container">
+        <aside class="file-explorer">
+            <div class="file-explorer-header">
+                <h2>文件列表</h2>
+                <div class="file-explorer-actions">
+                    <button id="new-file-btn" title="新建文件">📝</button>
+                    <button id="refresh-btn" title="刷新文件列表">🔄</button>
+                </div>
+            </div>
+            <div id="file-tree" class="file-tree">
+                <div class="loading">加载中...</div>
+            </div>
+        </aside>
+
+        <main class="content-view">
+            <div id="content-container">
+                <div id="markdown-content" class="markdown-content">
+                    <div class="welcome-message">
+                        <h2>欢迎使用Markdown查看器</h2>
+                        <p>请从左侧选择一个Markdown文件来查看其内容。</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 编辑器模板 (初始隐藏) -->
+    <template id="editor-template">
+        <div class="editor-container">
+            <div class="editor-toolbar">
+                <div class="file-info">
+                    <span class="file-path"></span>
+                </div>
+                <div class="editor-actions">
+                    <button class="save-btn">保存</button>
+                    <button class="cancel btn cancel">取消</button>
+                </div>
+            </div>
+            <textarea class="editor-textarea"></textarea>
+        </div>
+    </template>
+
+    <!-- 新建文件对话框 -->
+    <div class="modal-overlay" id="new-file-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>新建Markdown文件</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="new-file-form">
+                    <div class="form-group">
+                        <label for="new-file-name">文件名:</label>
+                        <input type="text" id="new-file-name" placeholder="example.md" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-file-location">位置:</label>
+                        <select id="new-file-location">
+                            <option value="">/ (根目录)</option>
+                            <!-- 文件夹列表将通过JavaScript动态添加 -->
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary modal-close-btn">取消</button>
+                <button class="btn-primary" id="create-file-btn">创建</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Markdown查看器 - 简单实用的Markdown文件浏览工具</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html> 
