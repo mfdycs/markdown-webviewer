@@ -46,27 +46,6 @@ python app.py
 http://localhost:5000
 ```
 
-## Usage
-
-1. **Viewing Files**
-   - Browse files in the left sidebar
-   - Click on a file to view its content
-   - Code blocks will be automatically highlighted
-
-2. **Editing Files**
-   - Click the edit button (✎) next to a file
-   - Make your changes in the editor
-   - Click "Save" to save changes or "Cancel" to discard
-
-3. **Creating Files**
-   - Click the "New File" button
-   - Enter the file name and location
-   - Click "Create" to create the file
-
-4. **Deleting Files**
-   - Click the delete button (🗑) next to a file
-   - Confirm the deletion
-
 ## Project Structure
 
 ```
@@ -79,14 +58,6 @@ markdown-viewer/
 ├── templates/         # HTML templates
 └── markdown/         # Directory for Markdown files
 ```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ## License
 
